@@ -104,12 +104,11 @@ const NSInteger AGPhotoBrowserThresholdToCenter = 150;
 
 - (void)configureCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    AGPhotoBrowserZoomableView *imageView = (AGPhotoBrowserZoomableView *)[cell.contentView viewWithTag:1];
+    UIImageView *imageView = (UIImageView *)[cell.contentView viewWithTag:1];
 	if (!imageView) {
-		imageView = [[AGPhotoBrowserZoomableView alloc] initWithFrame:self.bounds];
+		imageView = [[UIImageView  alloc] initWithFrame:self.bounds];
 		imageView.userInteractionEnabled = YES;
-        imageView.zoomableDelegate = self;
-		
+        
 		UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(p_imageViewPanned:)];
 		panGesture.delegate = self;
 		panGesture.maximumNumberOfTouches = 1;
@@ -128,14 +127,15 @@ const NSInteger AGPhotoBrowserThresholdToCenter = 150;
 	}
     else {
         // reset to 'zoom out' state
-        [imageView setZoomScale:1.0f];
+        //[imageView setZoomScale:1.0f];
     }
+    
     [imageView setImageWithURL:[NSURL URLWithString:[_dataSource photoBrowser:self imageURLAtIndex:indexPath.row]]
               placeholderImage:[UIImage imageNamed:@"kronetickets300"]];
     
-
-    //[imageView setImage:[_dataSource photoBrowser:self imageAtIndex:indexPath.row]];
-
+    
+    //    [imageView setImage:[_dataSource photoBrowser:self imageAtIndex:indexPath.row]];
+    
 }
 
 
