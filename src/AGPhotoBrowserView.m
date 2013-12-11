@@ -11,7 +11,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "AGPhotoBrowserOverlayView.h"
 #import "AGPhotoBrowserZoomableView.h"
-#import <SDWebImage/UIImageView+WebCache.h>
+
 
 
 @interface AGPhotoBrowserView () <
@@ -104,9 +104,9 @@ const NSInteger AGPhotoBrowserThresholdToCenter = 150;
 
 - (void)configureCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIImageView *imageView = (UIImageView *)[cell.contentView viewWithTag:1];
+    AGPhotoBrowserZoomableView *imageView = (AGPhotoBrowserZoomableView *)[cell.contentView viewWithTag:1];
 	if (!imageView) {
-		imageView = [[UIImageView  alloc] initWithFrame:self.bounds];
+		imageView = [[AGPhotoBrowserZoomableView  alloc] initWithFrame:self.bounds];
 		imageView.userInteractionEnabled = YES;
         
 		UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(p_imageViewPanned:)];
@@ -127,10 +127,10 @@ const NSInteger AGPhotoBrowserThresholdToCenter = 150;
 	}
     else {
         // reset to 'zoom out' state
-        //[imageView setZoomScale:1.0f];
+        [imageView setZoomScale:1.0f];
     }
     
-    [imageView setImageWithURL:[NSURL URLWithString:[_dataSource photoBrowser:self imageURLAtIndex:indexPath.row]]
+    [imageView setImageWithURL:[_dataSource photoBrowser:self imageURLAtIndex:indexPath.row]
               placeholderImage:[UIImage imageNamed:@"kronetickets300"]];
     
     

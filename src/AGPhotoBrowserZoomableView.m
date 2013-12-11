@@ -7,6 +7,7 @@
 //
 
 #import "AGPhotoBrowserZoomableView.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @implementation AGPhotoBrowserZoomableView
 
@@ -31,7 +32,9 @@
     }
     return self;
 }
-
+- (void) setImageWithURL: (NSString * ) url placeholderImage:(UIImage * ) placeholder {
+    [self.imageView setImageWithURL:[NSURL  URLWithString:url] placeholderImage:placeholder];
+}
 - (void)setImage:(UIImage *)image
 {
     self.imageView.image = image;
@@ -63,6 +66,7 @@
 #pragma mark - UIScrollViewDelegates
 - (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale
 {
+    
 }
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
