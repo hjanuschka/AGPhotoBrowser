@@ -11,8 +11,7 @@
 @protocol AGPhotoBrowserDataSource <NSObject>
 
 - (NSInteger)numberOfPhotosForPhotoBrowser:(AGPhotoBrowserView *)photoBrowser;
-- (UIImage *)photoBrowser:(AGPhotoBrowserView *)photoBrowser imageAtIndex:(NSInteger)index;
-
+- (NSString *)photoBrowser:(AGPhotoBrowserView *)photoBrowser imageURLAtIndex:(NSInteger)index;
 @optional
 
 - (NSString *)photoBrowser:(AGPhotoBrowserView *)photoBrowser titleForImageAtIndex:(NSInteger)index;

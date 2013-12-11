@@ -129,8 +129,11 @@ const NSInteger AGPhotoBrowserThresholdToCenter = 150;
         // reset to 'zoom out' state
         [imageView setZoomScale:1.0f];
     }
-	
-    [imageView setImage:[_dataSource photoBrowser:self imageAtIndex:indexPath.row]];
+    [imageView setImageWithURL:[NSURL URLWithString:[_dataSource photoBrowser:self imageURLAtIndex:indexPath.row]]
+              placeholderImage:[UIImage imageNamed:@"kronetickets300"]];
+    
+
+    //[imageView setImage:[_dataSource photoBrowser:self imageAtIndex:indexPath.row]];
 
 }
 
