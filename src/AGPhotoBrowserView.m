@@ -11,6 +11,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "AGPhotoBrowserOverlayView.h"
 #import "AGPhotoBrowserZoomableView.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 
 @interface AGPhotoBrowserView () <
